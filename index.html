@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loco School - Future of Robotics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Updated font to Outfit for that tech/modern feel if system fonts aren't enough, but usually system fonts are faster. I'll stick to CSS definition but used this preload just in case. -->
+    <style>
+        /* Override font family to use Outfit which is very modern/tech */
+        :root {
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="img/logo_circle.png" alt="Loco School Logo">
+                LOCO SCHOOL
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#locoboard">Board</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content container">
+            <h1>Go LOCO.<br>Build what moves the world.</h1>
+            <p>LOCO School is a nonprofit robotics academy where kids and teens learn coding, engineering, and AI by
+                building real robots in hands‑on projects.</p>
+            <a href="#courses" class="btn">Explore Courses</a>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2 class="section-title">Our Courses</h2>
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <article class="course-card" onclick="openModal(this)">
+                    <img src="img/courses/introduction.jpg" alt="Introduction to Arduino Robotics" class="course-img">
+                    <div class="course-content">
+                        <h3>Introduction to Arduino Robotics</h3>
+                        <p class="course-summary">Hands‑on start with robots and block‑based Arduino coding.</p>
+                        <div class="course-details">
+                            <ul>
+                                <li>No prior experience required</li>
+                                <li>Practice algorithmic thinking</li>
+                                <li>Explore the Arduino ecosystem</li>
+                                <li>Control LEDs, servos, and motors</li>
+                                <li>Build a custom robot in a small team</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Course 2 -->
+                <article class="course-card" onclick="openModal(this)">
+                    <img src="img/courses/advanced.jpg" alt="Advanced Arduino Robotics in C" class="course-img">
+                    <div class="course-content">
+                        <h3>Advanced Arduino Robotics in C</h3>
+                        <p class="course-summary">Text‑based robotics with modern C and embedded concepts.</p>
+                        <div class="course-details">
+                            <ul>
+                                <li>For students with some coding experience</li>
+                                <li>Learn core embedded C for robotics</li>
+                                <li>Grasp hardware and circuit basics</li>
+                                <li>Design and program your own robot as a team</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCOboard Section -->
+    <section id="locoboard" class="locoboard">
+        <div class="container">
+            <h2 class="section-title">Meet LOCOboard</h2>
+
+            <!-- Hero Showcase -->
+            <div class="locoboard-showcase">
+                <div class="locoboard-content-new">
+                    <h3>The ultimate Arduino expansion</h3>
+                    <p>LOCOboard simplifies Arduino robotics while keeping all the flexibility and compatibility makers
+                        love. Plug it on, skip the messy wiring, and stay free to add any custom hardware.</p>
+                    <ul class="locoboard-features-list">
+                        <li><span class="feature-icon">⚡</span>
+                            <div class="feature-text"><strong>Instant connections:</strong> Dedicated ports for servos,
+                                motors, and sensors</div>
+                        </li>
+                        <li><span class="feature-icon">🎨</span>
+                            <div class="feature-text"><strong>Built‑in creativity:</strong> 8x8 LED matrix and RGB LEDs
+                                for rich visual feedback</div>
+                        </li>
+                        <li><span class="feature-icon">🔊</span>
+                            <div class="feature-text"><strong>Interactive:</strong> Onboard buzzer and buttons for
+                                playful
+                                input and output</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="locoboard-hero-image">
+                    <img src="img/locoboard-hero.png" alt="LOCOboard Hero View">
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Student Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Student Projects</h2>
+            <div class="projects-scroll">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="img/projects/alarm.jpg" alt="Bluetooth Alarm System">
+                    <div class="project-info">
+                        <h3>Bluetooth Alarm</h3>
+                        <p>Automatic alarm system with bluetooth control.</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="img/projects/dog.jpg" alt="Robotic Dog">
+                    <div class="project-info">
+                        <h3>Robotic Dog</h3>
+                        <p>Robotic dog that can follow commands.</p>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="img/projects/humidifier.jpg" alt="Mobile Humidifier Robot">
+                    <div class="project-info">
+                        <h3>Humidifier Robot</h3>
+                        <p>Mobile humidifier robot.</p>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <img src="img/projects/switcher.jpg" alt="Light Switcher Manipulator">
+                    <div class="project-info">
+                        <h3>Light Switcher</h3>
+                        <p>Robotic manipulator for light switching.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Impressions</h2>
+            <div class="gallery-wrapper">
+                <button class="scroll-btn left" onclick="scrollGallery(-1)">&#10094;</button>
+                <div class="gallery-scroll">
+                    <!-- Image 1 -->
+                    <div class="gallery-item" onclick="openGallery(0)">
+                        <img src="img/impressions/20230112_183910.jpg" alt="Robotics Workshop" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Hands-on Building</span></div>
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="gallery-item" onclick="openGallery(1)">
+                        <img src="img/impressions/IMG_20250428_185221.jpg" alt="Circuit Design" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Circuit Design</span></div>
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="gallery-item" onclick="openGallery(2)">
+                        <img src="img/impressions/IMG_8007.jpg" alt="Prototyping" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Prototyping</span></div>
+                    </div>
+                    <!-- Image 4 -->
+                    <div class="gallery-item" onclick="openGallery(3)">
+                        <img src="img/impressions/IMG_8083.jpg" alt="Team Collaboration" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Team Collaboration</span></div>
+                    </div>
+                    <!-- Image 5 -->
+                    <div class="gallery-item" onclick="openGallery(4)">
+                        <img src="img/impressions/IMG_8135.jpg" alt="Advanced Robotics" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Advanced Robotics</span></div>
+                    </div>
+                    <!-- Image 6 -->
+                    <div class="gallery-item" onclick="openGallery(5)">
+                        <img src="img/impressions/IMG_8162.jpg" alt="Final Testing" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Final Testing</span></div>
+                    </div>
+                    <!-- Image 7 -->
+                    <div class="gallery-item" onclick="openGallery(6)">
+                        <img src="img/impressions/_MG_5916_s.jpg" alt="Creative Engineering" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Creative Engineering</span></div>
+                    </div>
+                    <!-- Image 8 -->
+                    <div class="gallery-item" onclick="openGallery(7)">
+                        <img src="img/impressions/_MG_5965_s.jpg" alt="Workshop Focus" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Workshop Focus</span></div>
+                    </div>
+                    <!-- Image 9 -->
+                    <div class="gallery-item" onclick="openGallery(8)">
+                        <img src="img/impressions/_MG_6154_s.jpg" alt="Learning Process" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Learning Process</span></div>
+                    </div>
+                    <!-- Image 10 -->
+                    <div class="gallery-item" onclick="openGallery(9)">
+                        <img src="img/impressions/_MG_6177_s.jpg" alt="Future Engineers" loading="lazy">
+                        <div class="gallery-overlay"><span class="gallery-text">Future Engineers</span></div>
+                    </div>
+                </div>
+                <button class="scroll-btn right" onclick="scrollGallery(1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-grid">
+                <!-- Member 1 -->
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="img/team/maxim.png" alt="Maxim Tatarchenko">
+                    </div>
+                    <h3>Maxim Tatarchenko</h3>
+                    <p class="role">Founder</p>
+                </div>
+                <!-- Member 2 -->
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="img/team/natalia.png" alt="Natalia Kholodna">
+                    </div>
+                    <h3>Natalia Kholodna</h3>
+                    <p class="role">Mentor</p>
+                </div>
+                <!-- Member 3 -->
+                <div class="team-card">
+                    <div class="team-img-wrapper">
+                        <img src="img/team/volodymir.png" alt="Volodymir Scherbina">
+                    </div>
+                    <h3>Volodymir Scherbina</h3>
+                    <p class="role">Mentor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" placeholder="How can we help?" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="galleryModal" class="modal lightbox">
+        <span class="close-btn" onclick="closeGallery()">&times;</span>
+        <div class="lightbox-content">
+            <button class="nav-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+            <img id="lightboxImg" src="" alt="Gallery Image">
+            <button class="nav-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">LOCO SCHOOL</div>
+            <p>Empowering the next generation of engineers.</p>
+            <div class="copyright">
+                &copy; 2026 Loco School. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Details Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody" class="modal-body">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
