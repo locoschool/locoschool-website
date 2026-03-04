@@ -171,6 +171,34 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Touch swipe support for gallery lightbox
+(function () {
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    document.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', function (e) {
+        const modal = document.getElementById('galleryModal');
+        if (!modal || !modal.classList.contains('show')) return;
+
+        const deltaX = e.changedTouches[0].screenX - touchStartX;
+        const deltaY = e.changedTouches[0].screenY - touchStartY;
+
+        // Only trigger if horizontal swipe is dominant and exceeds threshold
+        if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+            if (deltaX < 0) {
+                changeSlide(1);  // Swipe left → next
+            } else {
+                changeSlide(-1); // Swipe right → previous
+            }
+        }
+    }, { passive: true });
+})();
+
 // Close gallery on outside click
 const galleryModal = document.getElementById('galleryModal');
 if (galleryModal) {

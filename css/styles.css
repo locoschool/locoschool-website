@@ -925,3 +925,227 @@ textarea.form-control {
     font-size: 1.1rem;
     margin-top: 1rem;
 }
+
+/* ===== Tablet Breakpoint ===== */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .courses,
+    .projects,
+    .gallery,
+    .team,
+    .contact {
+        padding: 4rem 0;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .gallery-item {
+        min-width: calc((100% - 1.5rem) / 2);
+        width: calc((100% - 1.5rem) / 2);
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+    }
+
+    .team-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-form {
+        padding: 2rem;
+    }
+
+    .modal-content {
+        padding: 2rem;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .modal-body h3 {
+        font-size: 1.5rem;
+    }
+
+    .nav-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+
+    .prev-btn {
+        left: -50px;
+    }
+
+    .next-btn {
+        right: -50px;
+    }
+
+    .locoboard-content-new h3 {
+        font-size: 2rem;
+    }
+}
+
+/* ===== Phone Breakpoint ===== */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+    }
+
+    .courses,
+    .projects,
+    .gallery,
+    .team,
+    .contact {
+        padding: 3rem 0;
+    }
+
+    .courses-grid {
+        gap: 1.5rem;
+    }
+
+    .course-img {
+        height: 200px;
+    }
+
+    .course-content {
+        padding: 1.5rem;
+    }
+
+    .locoboard {
+        padding: 3rem 0;
+    }
+
+    .locoboard-showcase {
+        gap: 2rem;
+    }
+
+    .locoboard-content-new h3 {
+        font-size: 1.5rem;
+    }
+
+    .locoboard-content-new p {
+        font-size: 1rem;
+    }
+
+    .locoboard-hero-image img {
+        max-width: 100%;
+    }
+
+    .project-card {
+        min-width: 260px;
+        width: 260px;
+    }
+
+    .project-card img {
+        height: 180px;
+    }
+
+    .gallery-item {
+        min-width: calc(100%);
+        width: calc(100%);
+    }
+
+    .gallery-scroll {
+        gap: 1rem;
+    }
+
+    .scroll-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .scroll-btn.left {
+        margin-right: 0.5rem;
+    }
+
+    .scroll-btn.right {
+        margin-left: 0.5rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .team-img-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+
+    .team-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .modal-img {
+        height: 180px;
+    }
+
+    .lightbox img {
+        max-width: 90vw;
+    }
+
+    .nav-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+        padding: 0.25rem;
+    }
+
+    .prev-btn {
+        left: 5px;
+    }
+
+    .next-btn {
+        right: 5px;
+    }
+
+    footer {
+        padding: 3rem 0 1.5rem;
+    }
+}
