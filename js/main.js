@@ -5,14 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-
-            // Animate hamburger lines
-            const bars = document.querySelectorAll('.bar');
-            if (navLinks.classList.contains('active')) {
-                // Simple animation state logic could go here if needed
-            }
+            hamburger.classList.toggle('active');
         });
     }
+
+    // Active nav indicator via IntersectionObserver
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navItems.forEach(a => a.classList.remove('active'));
+                const link = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+                if (link) link.classList.add('active');
+            }
+        });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => sectionObserver.observe(s));
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -79,21 +90,15 @@ window.openModal = function (cardElement) {
     `;
 
     // Show modal
-    modal.style.display = 'flex';
-    // Trigger reflow to enable transition
-    void modal.offsetWidth;
     modal.classList.add('show');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
 };
 
 // Close Modal
 window.closeModal = function () {
     const modal = document.getElementById('courseModal');
     modal.classList.remove('show');
-
-    // Wait for transition to finish before hiding display
     setTimeout(() => {
-        modal.style.display = 'none';
         document.body.style.overflow = '';
     }, 300);
 };
@@ -111,9 +116,6 @@ window.openGallery = function (index) {
     currentGalleryIndex = index;
     img.src = collectedImages[currentGalleryIndex];
 
-    modal.style.display = 'flex';
-    // Trigger reflow
-    void modal.offsetWidth;
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
 };
@@ -133,7 +135,6 @@ window.closeGallery = function () {
     }
 
     setTimeout(() => {
-        modal.style.display = 'none';
         document.body.style.overflow = '';
     }, 300);
 };
@@ -287,22 +288,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(function (response) {
                     console.log('SUCCESS!', response.status, response.text);
 
-                    // Show success message
-                    alert('Thank you for your message! We will get back to you soon.');
+                    const status = document.getElementById('form-status');
+                    status.textContent = 'Thank you! We will get back to you soon.';
+                    status.className = 'form-status success';
 
-                    // Reset form
                     contactForm.reset();
 
-                    // Re-enable button
                     submitBtn.disabled = false;
                     submitBtn.textContent = originalBtnText;
                 }, function (error) {
                     console.error('FAILED...', error);
 
-                    // Show error message
-                    alert('Oops! Something went wrong. Please try again or email us directly at tatarchm@gmail.com');
+                    const status = document.getElementById('form-status');
+                    status.textContent = 'Something went wrong. Please email us at tatarchm@gmail.com';
+                    status.className = 'form-status error';
 
-                    // Re-enable button
                     submitBtn.disabled = false;
                     submitBtn.textContent = originalBtnText;
                 });

@@ -18,9 +18,7 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+/* scroll-behavior handled by JS smooth scroll handler */
 
 body {
     background-color: var(--bg-color);
@@ -151,8 +149,13 @@ nav {
     transition: width 0.3s;
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
     width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--accent-color);
 }
 
 .hamburger {
@@ -166,7 +169,21 @@ nav {
     width: 25px;
     height: 3px;
     background-color: #fff;
-    transition: 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Hero Section */
@@ -181,6 +198,11 @@ nav {
     overflow: hidden;
 }
 
+@keyframes kenburns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+}
+
 .hero-bg {
     position: absolute;
     top: 0;
@@ -192,11 +214,7 @@ nav {
     background-position: center;
     z-index: -1;
     filter: brightness(0.8);
-    transition: transform 5s ease;
-}
-
-.hero:hover .hero-bg {
-    transform: scale(1.05);
+    animation: kenburns 12s ease forwards;
 }
 
 .hero-content h1 {
@@ -218,7 +236,7 @@ nav {
 /* Courses Section */
 .courses {
     padding: 6rem 0;
-    background: #111;
+    background: #111118;
 }
 
 .courses-grid {
@@ -272,15 +290,37 @@ nav {
     cursor: pointer;
 }
 
-.course-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    border-color: var(--primary-color);
+.card-cta {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.course-card:hover .card-cta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.course-img {
+    transition: transform 0.4s ease;
+}
+
+.course-card:hover .course-img {
+    transform: scale(1.03);
 }
 
 /* Modal Styles */
 .modal {
-    display: none;
+    display: flex;
+    visibility: hidden;
+    pointer-events: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -291,12 +331,13 @@ nav {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     backdrop-filter: blur(5px);
 }
 
 .modal.show {
-    display: flex;
+    visibility: visible;
+    pointer-events: auto;
     opacity: 1;
 }
 
@@ -341,7 +382,10 @@ nav {
 }
 
 .modal-body h3 {
-    color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
     font-size: 2rem;
 }
@@ -555,17 +599,23 @@ nav {
 }
 
 .prev-btn {
-    left: -80px;
+    position: fixed;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .next-btn {
-    right: -80px;
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Footer */
 footer {
     padding: 4rem 0 2rem;
-    background: #000;
+    background: #111118;
     text-align: center;
     border-top: 1px solid var(--glass-border);
 }
@@ -626,7 +676,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 4rem;
-    margin-bottom: 6rem;
+    margin-bottom: 0;
 }
 
 .locoboard-content-new {
@@ -674,7 +724,7 @@ footer {
 .locoboard-hero-image {
     flex: 1.2;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     position: relative;
 }
 
@@ -683,8 +733,7 @@ footer {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
-    max-width: 80%;
-    /* Reduced from 100% to make it smaller as requested */
+    max-width: 90%;
     border: 1px solid var(--glass-border);
 }
 
@@ -721,8 +770,7 @@ footer {
 /* Student Projects Section */
 .projects {
     padding: 6rem 0;
-    background: #000;
-    /* Distinct dark background */
+    background: var(--bg-color);
 }
 
 .projects-scroll {
@@ -917,7 +965,33 @@ footer {
 
 textarea.form-control {
     resize: vertical;
-    min-height: 120px;
+    min-height: 160px;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.form-status {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    background: rgba(0, 206, 201, 0.15);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.form-status.error {
+    display: block;
+    background: rgba(255, 80, 80, 0.1);
+    border: 1px solid rgba(255, 80, 80, 0.5);
+    color: #ff8080;
 }
 
 .contact .btn {
@@ -987,14 +1061,6 @@ textarea.form-control {
         height: 44px;
         font-size: 1.5rem;
         padding: 0.5rem;
-    }
-
-    .prev-btn {
-        left: -50px;
-    }
-
-    .next-btn {
-        right: -50px;
     }
 
     .locoboard-content-new h3 {
@@ -1135,14 +1201,6 @@ textarea.form-control {
         height: 36px;
         font-size: 1.2rem;
         padding: 0.25rem;
-    }
-
-    .prev-btn {
-        left: 5px;
-    }
-
-    .next-btn {
-        right: 5px;
     }
 
     footer {
